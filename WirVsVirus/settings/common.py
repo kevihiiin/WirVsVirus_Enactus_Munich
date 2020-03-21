@@ -2,7 +2,6 @@
 from os.path import abspath, basename, dirname, join, normpath
 import sys
 
-
 # ##### PATH CONFIGURATION ################################
 
 # fetch Django's project directory
@@ -33,7 +32,6 @@ PROJECT_TEMPLATES = [
 
 # add apps/ to the Python path
 sys.path.append(normpath(join(PROJECT_ROOT, 'apps')))
-
 
 # ##### APPLICATION CONFIGURATION #########################
 
@@ -81,7 +79,6 @@ TEMPLATES = [
 # Internationalization
 USE_I18N = False
 
-
 # ##### SECURITY CONFIGURATION ############################
 
 # We store the secret key here
@@ -93,7 +90,6 @@ ADMINS = (
     ('your name', 'your_name@example.com'),
 )
 MANAGERS = ADMINS
-
 
 # ##### DJANGO RUNNING CONFIGURATION ######################
 
@@ -109,10 +105,8 @@ STATIC_URL = '/static/'
 # the URL for media files
 MEDIA_URL = '/media/'
 
-
 # ##### DEBUG CONFIGURATION ###############################
 DEBUG = False
-
 
 # finally grab the SECRET KEY
 try:
@@ -120,6 +114,7 @@ try:
 except IOError:
     try:
         from django.utils.crypto import get_random_string
+
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!$%&()=+-_'
         SECRET_KEY = get_random_string(50, chars)
         with open(SECRET_FILE, 'w') as f:

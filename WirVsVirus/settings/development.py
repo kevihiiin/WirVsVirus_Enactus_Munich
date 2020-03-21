@@ -5,8 +5,7 @@ from os.path import join
 from .common import *
 
 # uncomment the following line to include i18n
-# from .i18n import *
-
+from .i18n import *
 
 # ##### DEBUG CONFIGURATION ###############################
 DEBUG = True
@@ -19,7 +18,6 @@ LOGIN_URL = 'core_login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'core_login'
 
-
 # ##### DATABASE CONFIGURATION ############################
 DATABASES = {
     'default': {
@@ -30,4 +28,4 @@ DATABASES = {
 
 # ##### APPLICATION CONFIGURATION #########################
 
-INSTALLED_APPS = DEFAULT_APPS
+INSTALLED_APPS = DEFAULT_APPS + ['apps.polls.apps.PollsConfig']
