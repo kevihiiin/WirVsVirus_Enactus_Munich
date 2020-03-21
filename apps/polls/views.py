@@ -4,12 +4,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
 from .models import Helper
-from .form import HelperForm
+from .forms import HelperForm
 
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
-    context_object_name = 'latest_poll_list'
+    context_object_name = 'helper_list'
 
     def get_queryset(self):
         return Helper.objects.all()[:5]

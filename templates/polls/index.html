@@ -2,10 +2,10 @@
 
 {% block polls_content %}
 <h1>Helpers</h1>
-{% if latest_poll_list %}
+{% if helper_list %}
     <ul>
-    {% for poll in latest_poll_list %}
-		<li><a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a></li>
+    {% for helper in helper_list %}
+		{{ helper.first_name }} {{ helper.last_name }}<br/>
     {% endfor %}
     </ul>
 {% else %}

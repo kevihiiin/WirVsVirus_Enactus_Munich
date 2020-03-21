@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import uuid
 from django.db import models
 
 
@@ -10,6 +11,7 @@ class Helper(models.Model):
         ('4', 'EXPERT')
     ]
 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     e_mail = models.CharField(max_length=200)
@@ -20,7 +22,7 @@ class Helper(models.Model):
         default='1',  # BASIC
     )
     post_code = models.CharField(max_length=25)
-    radius = models.IntegerField(default=10000)
+    radius = models.IntegerField(default=50)
     validated = models.BooleanField(default=False)
 
     def __str__(self):  # Python 3: def __unicode__(self):
@@ -28,6 +30,7 @@ class Helper(models.Model):
 
 
 class Hospital(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
     e_mail = models.CharField(max_length=200)
     phone_nbr = models.CharField(max_length=25)
@@ -36,7 +39,6 @@ class Hospital(models.Model):
     post_code = models.CharField(max_length=25)
     street = models.CharField(max_length=200)
     validated = models.BooleanField(default=False)
-
 
     def __str__(self):  # Python 3: def __unicode__(self):
         return self.name
