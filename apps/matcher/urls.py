@@ -4,7 +4,7 @@ from django.urls import path
 
 from . import views
 
-app_name = "polls"
+app_name = "matcher"
 urlpatterns = [
     path(r'helper/', views.IndexView.as_view(), name='index'),
     path(r'helper/new/', views.helper_new, name='helper_new'),

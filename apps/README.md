@@ -10,9 +10,9 @@ Dokumentation: https://docs.djangoproject.com/en/3.0/intro/tutorial01/#creating-
 
 Oder kurz:
 ```shell script
-# Erstelle neue App namens "polls"
+# Erstelle neue App namens "matcher"
 # Kommandozeile (achte auf die geladene environment, am besten im PyCharm terminal laufen lassen)
-python manage.py startapp polls
+python manage.py startapp matcher
 
 # Oder (bevorzugt) direkt über PyCharm: Tools -> Run manage.py Task... [Gibts nur in PyCharm Professional]
 startapp poll

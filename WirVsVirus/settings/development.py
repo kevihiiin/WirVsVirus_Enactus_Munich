@@ -28,4 +28,4 @@ DATABASES = {
 
 # ##### APPLICATION CONFIGURATION #########################
 
-INSTALLED_APPS = DEFAULT_APPS + ['apps.polls.apps.PollsConfig']
+INSTALLED_APPS = DEFAULT_APPS + ['apps.matcher.apps.MatcherConfig']
