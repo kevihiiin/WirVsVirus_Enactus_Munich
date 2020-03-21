@@ -28,9 +28,15 @@ pip install -r requirements/development.txt
 
 PyCharm 
 
+Hier das Ganze als Video unter `doc/PyCharm_Setup.mkv`
+
 1. Projekt importieren -> Projekt importieren
 
-2. Datenbank migrieren (ist eine lokale SQLite für development, in production automatisch MariaDB oder MySQL oder PostgreSQL, etc)
+2. Die erstellte Virtual Environment auswählen für das Projekt (oder eine neu erstellen) [sollte automatisch übernommen werden, wenn sie genauso heißt wie oben beschrieben]
+
+3. Django Run erstellen
+
+4. Datenbank migrieren (ist eine lokale SQLite für development, in production automatisch MariaDB oder MySQL oder PostgreSQL, etc)
 
    ```bash
    # Kommandozeile (achte auf die geladene environment, am besten im PyCharm terminal laufen lassen)
@@ -40,9 +46,9 @@ PyCharm
    migrate
    ```
 
-3. Django Server laufen lassen (in PyCharm oben rechts auf run), Website besuchen unter http://127.0.0.1:8000/
+5. Django Server laufen lassen (in PyCharm oben rechts auf run), Website besuchen unter http://127.0.0.1:8000/polls
 
-4. Sollte keine Fehlermeldung anzeigen
+6. Sollte keine Fehlermeldung anzeigen
 
 ## Projektstruktur
 
