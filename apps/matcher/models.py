@@ -23,10 +23,11 @@ class Helper(models.Model):
     )
     post_code = models.CharField(max_length=25)
     radius = models.IntegerField(default=50)
+    available_dates = models.IntegerField(default=28)
     validated = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
 
-    def __str__(self):  # Python 3: def __unicode__(self):
+    def __unicode__(self):
         return f'{self.first_name} {self.last_name} {self.post_code}'
 
 
@@ -41,7 +42,7 @@ class Hospital(models.Model):
     street = models.CharField(max_length=200)
     validated = models.BooleanField(default=False)
 
-    def __str__(self):  # Python 3: def __unicode__(self):
+    def __unicode__(self):
         return self.name
 
 
