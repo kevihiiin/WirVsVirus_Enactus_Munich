@@ -29,3 +29,5 @@ DATABASES = {
 # ##### APPLICATION CONFIGURATION #########################
 
 INSTALLED_APPS = DEFAULT_APPS + ['apps.matcher.apps.MatcherConfig']
+
+X_FRAME_OPTIONS = 'ALLOW ALL'
