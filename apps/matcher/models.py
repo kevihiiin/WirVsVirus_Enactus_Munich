@@ -42,6 +42,22 @@ class Hospital(models.Model):
     street = models.CharField(max_length=200)
     validated = models.BooleanField(default=False)
 
+    # Inquiry
+    SKILL_LEVEL_CHOICES = [
+        ('1', 'BASIC'),
+        ('2', 'INTERMEDIATE'),
+        ('3', 'APPROBATION'),
+        ('4', 'EXPERT')
+    ]
+
+    number_of_helpers = models.IntegerField(default=20)
+    skill_level = models.CharField(
+        max_length=1,
+        choices=SKILL_LEVEL_CHOICES,
+        default='1',  # BASIC
+    )
+    age_requirement = models.IntegerField(default=18)
+
     def __unicode__(self):
         return self.name
 

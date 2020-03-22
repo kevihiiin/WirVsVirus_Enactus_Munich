@@ -3,9 +3,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
-from .models import Helper
-from .models import Inquiry
-from .forms import HelperForm
+from .models import Helper, Inquiry, Hospital
+from .forms import HelperForm, InquiryForm
 from .tasks import match_indiviual, send_mail
 
 
@@ -38,6 +37,28 @@ def helper_detail(request, helper_id):
     print("SENDING MAIL")
     send_mail(p)
     print("SENT MAIL")
+    return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: {matched_inquiry.id} at {matched_inquiry.hospital.name}')
+
+
+def institution_new(request):
+    if request.method == "POST":
+        form = request.POST
+        print(form.keys())
+        if form.is_valid():
+            post = form.save(commit=False)
+            # post.author = request.user
+            # post.published_date = timezone.now()
+            post.save()
+            return HttpResponseRedirect(reverse('matcher:institution_detail', kwargs={'inquiry_id': post.pk}))
+    else:
+        form = InquiryForm()
+    return render(request, 'polls/register_institution.html', {'form': form})
+
+
+def institution_detail(request, inquiry_id):
+    p = get_object_or_404(Hospital, pk=inquiry_id)
+    # trying to match the helper to an inquiry
+    matched_inquiry = match_indiviual(Inquiry.objects.all(), p)
     return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: {matched_inquiry.id} at {matched_inquiry.hospital.name}')
 
 # class DetailView(generic.DetailView):
