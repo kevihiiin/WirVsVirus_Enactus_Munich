@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Register as Helper</title>
 </head>
 <body>
-    <h2>Register Helper</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
+
+    <br>
+    <br>
+     <form method="post" class="post-form">
+        {% csrf_token %}
+         {% load crispy_forms_tags %}
+        <div class="row">
+          <div class="col-6">
+            {{ form.first_name|as_crispy_field }}
+          </div>
+          <div class="col-6">
+            {{ form.last_name|as_crispy_field }}
+          </div>
+        </div>
+         {{ form.e_mail|as_crispy_field }}
+        {{ form.phone_nbr|as_crispy_field }}
+        {{ form.post_code|as_crispy_field }}
+         {{ form.radius|as_crispy_field }}
+         <div class="fieldWrapper">
+                {{ form.skill_level.errors }}
+                <label for="{{ form.skill_level.id_for_label }}">Wie viel medizinische Vorerfahrung hast du?</label>
+             <br>
+             {{ form.skill_level }}
+        </div>
+
+
+         <br>
+         <br>
+         <br>
+         <div class="wrapper" style="text-align: center;">
+            <button type="submit" class="btn btn-success" style="background-color:#9AC082;border-color:#9AC082;color:#030202 ">Hilf uns Covid 19 zu bekämpfen</button>
+         </div>
+  </form>
+   {% comment %} <form method="POST" class="post-form">{% csrf_token %}
         {% load crispy_forms_tags %}
         {{ form | crispy }}
         <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+    </form>{% endcomment %}
 </body>
 </html>
