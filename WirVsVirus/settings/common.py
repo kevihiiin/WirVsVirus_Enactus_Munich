@@ -43,6 +43,7 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 ]
 
 # Middlewares
@@ -124,3 +125,6 @@ except IOError:
             f.write(SECRET_KEY)
     except IOError:
         raise Exception('Could not open %s for writing!' % SECRET_FILE)
+
+# ##### EXTERNAL APPS CONFIGURATION ###############################
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
