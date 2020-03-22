@@ -108,6 +108,8 @@ MEDIA_URL = '/media/'
 # ##### DEBUG CONFIGURATION ###############################
 DEBUG = False
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 # finally grab the SECRET KEY
 try:
     SECRET_KEY = open(SECRET_FILE).read().strip()
