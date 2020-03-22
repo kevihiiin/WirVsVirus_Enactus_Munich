@@ -42,8 +42,7 @@ def helper_detail(request, helper_id):
 
 def institution_new(request):
     if request.method == "POST":
-        form = request.POST
-        print(form.keys())
+        form = InquiryForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             # post.author = request.user
