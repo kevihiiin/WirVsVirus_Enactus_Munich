@@ -134,14 +134,14 @@ das Virushelden Team
 def send_mail(e_mail, message):
     # mail setup
     # set up the SMTP server
-    s = smtplib.SMTP(host='mail.gmx.net', port=587)
+    s = smtplib.SMTP(host='mail.example.net', port=587)
     s.starttls()
-    s.login('virushelden@gmx.de', 'nedlehsuriV')
+    s.login('virushelden@example.de', 'xxxxxxxxxxxxx')
 
     msg = MIMEMultipart()  # create a message
 
     # setup the parameters of the message
-    msg['From'] = 'virushelden@gmx.de'
+    msg['From'] = 'virushelden@example.de'
     msg['To'] = e_mail
     msg['Subject'] = "Deine Anmeldung bei Virushelden"
 
