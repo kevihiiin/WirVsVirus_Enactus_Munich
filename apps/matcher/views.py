@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import Helper, Inquiry, Hospital
 from .forms import HelperForm, InquiryForm
 from .tasks import match_indiviual, send_mail
@@ -15,7 +17,7 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Helper.objects.all()[:5]
 
-
+@csrf_exempt
 def helper_new(request):
     if request.method == "POST":
         form = HelperForm(request.POST)
@@ -40,7 +42,7 @@ def helper_detail(request, helper_id):
     match_string = f'{matched_inquiry.id} at {matched_inquiry.hospital.name}' if matched_inquiry is not None else 'None'
     return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: ' + match_string)
 
-
+@csrf_exempt
 def institution_new(request):
     if request.method == "POST":
         form = InquiryForm(request.POST)
