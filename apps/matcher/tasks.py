@@ -1,4 +1,7 @@
 import pgeocode
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 # this method takes a list of inquiries and a list of helpers and returns a dictionary,
@@ -74,3 +77,32 @@ def match_indiviual(inquiries, helper):
             return assigned_inquiry
 
     return None
+
+
+def send_mail(helper):
+    # mail setup
+    # set up the SMTP server
+    s = smtplib.SMTP(host='mail.gmx.net', port=587)
+    s.starttls()
+    s.login('virushelden@gmx.de', 'nedlehsuriV')
+
+    msg = MIMEMultipart()  # create a message
+
+    message = f"Hi {helper.first_name}, danke fürs Anmelden. Wenn du diese Mail bekommst, bsit du cool." \
+              f"Schöne Grüße, deine Virushelden"
+
+    # setup the parameters of the message
+    msg['From'] = 'virushelden@gmx.de'
+    msg['To'] = helper.e_mail
+    msg['Subject'] = "Deine Anmeldung bei Virushelden"
+
+    # add in the message body
+    msg.attach(MIMEText(message, 'plain'))
+
+    # send the message via the server set up earlier.
+    s.send_message(msg)
+    del msg
+
+    # Terminate the SMTP session and close the connection
+    s.quit()
+
