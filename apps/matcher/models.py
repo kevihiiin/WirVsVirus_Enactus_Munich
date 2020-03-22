@@ -24,6 +24,7 @@ class Helper(models.Model):
     post_code = models.CharField(max_length=25)
     radius = models.IntegerField(default=50)
     validated = models.BooleanField(default=False)
+    available = models.BooleanField(default=True)
 
     def __str__(self):  # Python 3: def __unicode__(self):
         return f'{self.first_name} {self.last_name} {self.post_code}'
