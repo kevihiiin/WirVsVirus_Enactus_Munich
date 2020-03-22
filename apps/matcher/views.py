@@ -34,7 +34,8 @@ def helper_new(request):
 def helper_detail(request, helper_id):
     p = get_object_or_404(Helper, pk=helper_id)
     # trying to match the helper to an inquiry
-    return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: {match_indiviual(Inquiry.objects.all(), p)}')
+    matched_inquiry = match_indiviual(Inquiry.objects.all(), p)
+    return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: {matched_inquiry.id} at {matched_inquiry.hospital.name}')
 
 # class DetailView(generic.DetailView):
 #     model = Poll

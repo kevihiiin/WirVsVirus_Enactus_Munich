@@ -10,7 +10,7 @@ def match_all(inquiries, helpers):
 
     # in order to distribute the helpers best, we sort them by skill level, so that hospitals with only basic needs
     # get basic helpers first
-    helpers.sort(key=lambda x: x.level)
+    helpers.sort(key=lambda x: x.skill_level)
 
     # output dictionary which will be returned by the method
     # keys are hospitals, values are lists of helpers that are within range
@@ -34,7 +34,7 @@ def match_all(inquiries, helpers):
                 continue
 
             # if we have enough helpers for the inquiry, we can jump to the next one
-            if len(matching_results[inquiry.id]) == inquiry.amount_needed:
+            if len(matching_results[inquiry.id]) == inquiry.number_of_helpers:
                 break
 
             # obtaining the distance between the hospital and the helper
@@ -42,7 +42,7 @@ def match_all(inquiries, helpers):
 
             # if the helper is within distance, he gets added to the list
             # we are also checking if the level of the helper is equal or above what the inquiries needs
-            if distance < helper.radius and inquiry.level_needed <= helper.level:
+            if distance < helper.radius and inquiry.skill_level <= helper.skill_level:
                 matching_results[inquiry.id].append(helper.id)
                 assigned_helpers.append(helper.id)
 
@@ -61,16 +61,16 @@ def match_indiviual(inquiries, helper):
     for inquiry in inquiries:
         hospital = inquiry.hospital
 
-        # if the helper is already assigned, he shall not get assigned to a second hospital
-        if assigned_inquiry:
-            return assigned_inquiry
-
         # obtaining the distance between the hospital and the helper
         distance = dist.query_postal_code(hospital.post_code, helper.post_code)
 
         # if the helper is within distance, he gets added to the list
         # we are also checking if the level of the helper is equal or above what the inquiries needs
-        if distance < helper.radius and inquiry.level_needed <= helper.level:
+        if distance < helper.radius and inquiry.skill_level <= helper.skill_level:
             assigned_inquiry = inquiry
+
+        # if the helper is already assigned, he shall not get assigned to a second hospital
+        if assigned_inquiry:
+            return assigned_inquiry
 
     return None
