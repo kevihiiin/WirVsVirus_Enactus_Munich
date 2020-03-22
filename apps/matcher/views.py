@@ -4,7 +4,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
 from .models import Helper
+from .models import Inquiry
 from .forms import HelperForm
+from .tasks import match_indiviual
 
 
 class IndexView(generic.ListView):
@@ -31,7 +33,8 @@ def helper_new(request):
 
 def helper_detail(request, helper_id):
     p = get_object_or_404(Helper, pk=helper_id)
-    return HttpResponse(f'{p.first_name} {p.last_name}')
+    # trying to match the helper to an inquiry
+    return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: {match_indiviual(Inquiry.objects.all(), p)}')
 
 # class DetailView(generic.DetailView):
 #     model = Poll
