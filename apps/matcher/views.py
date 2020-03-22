@@ -35,9 +35,10 @@ def helper_detail(request, helper_id):
     # trying to match the helper to an inquiry
     matched_inquiry = match_indiviual(Inquiry.objects.all(), p)
     print("SENDING MAIL")
-    send_mail(p)
+    # send_mail(p)
     print("SENT MAIL")
-    return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: {matched_inquiry.id} at {matched_inquiry.hospital.name}')
+    match_string = f'{matched_inquiry.id} at {matched_inquiry.hospital.name}' if matched_inquiry is not None else 'None'
+    return HttpResponse(f'{p.first_name} {p.last_name} was matched to the following Inquiry: ' + match_string)
 
 
 def institution_new(request):

@@ -14,6 +14,7 @@ class Helper(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
+    age = models.IntegerField(default=0)
     e_mail = models.CharField(max_length=200)
     phone_nbr = models.CharField(max_length=25)
     skill_level = models.CharField(
