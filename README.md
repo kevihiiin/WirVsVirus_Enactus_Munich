@@ -1,7 +1,5 @@
  # WirVsVirus
 
-Github Repo für die Winner?;)
-
 
 
 ## Setup
@@ -23,7 +21,7 @@ python3 -m venv env
 # Activate environment
 source env/bin/activate
 # Install all requirements
-pip install -r requirements/development.txt
+pip install -r development.txt
 ```
 
 PyCharm 
