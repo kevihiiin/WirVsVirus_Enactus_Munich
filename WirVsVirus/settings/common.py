@@ -37,7 +37,7 @@ sys.path.append(normpath(join(PROJECT_ROOT, 'apps')))
 
 # these are the apps
 DEFAULT_APPS = [
-    'apps.matcher.apps.MatcherConfig',
+    #'apps.matcher.apps.MatcherConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
